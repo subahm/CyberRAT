@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="s01">
+      <form action="results" method = "post">
+          {%  csrf_token %}
+        <fieldset>
+          <legend>CyberRAT</legend>
+        </fieldset>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            {{ form.name }}
+          </div>
+          <div class="input-field second-wrap">
+            {{ form.email }}
+          </div>
+          <div class="input-field third-wrap">
+            <button type="submit" class="btn-search">Search</button>
+          </div>
+        </div>
+      </form>
+    </div><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+{% endblock %}

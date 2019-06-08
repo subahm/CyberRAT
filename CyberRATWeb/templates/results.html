@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h1> Cyber RAT </h1>
+    <br>
+    <p> Hello {{entity.name}}</p>
+    <p> You have been breached {{ entity.breachedSites | length }} times</p>
+    {%  if entity.breachedSites %}
+
+    <p> Make sure you never use the passwords you used in: <br>
+        {%  for site in entity.breachedSites %}
+            <li> {{ site }}</li>
+        {% endfor %}
+    {%  else %}
+        <p>Good job on making secure passwords!</p>
+    {% endif %}
+    </p>
+</div>
+{% endblock %}

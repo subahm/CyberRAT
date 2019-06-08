@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 
-from CyberRATWeb.models import EmailForm
+from CyberRATWeb.forms import EmailForm
 
 class Entity():
     def __init__(self, name, breachNumber, breachedSites):
