@@ -464,36 +464,36 @@ legend {
 
 
 /*Result Page CSS*/
-div {
-  width: 200px;
+.results {
+  width: 80%;
+  background-color: white;
+  border:5px solid black;
+  padding: 20px;
+  display: inline-block;
+  text-align: left;
 }
 
-h2 {
-  font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
-  margin: 0;
+.results legend {
   padding: 0;
+  font-size: 72px;
+  line-height: 1;
+  color: black;
+  margin-bottom: 60px;
 }
 
-ul {
+.results ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
-  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+.results li {
   border-bottom: 1px solid #ccc;
-}
 
-li:last-child {
-  border: none;
-}
-
-li a {
   text-decoration: none;
   color: #000;
   display: block;
-  width: 200px;
+  width: 100%;
 
   -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
   -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
@@ -502,7 +502,12 @@ li a {
   transition: font-size 0.3s ease, background-color 0.3s ease;
 }
 
-li a:hover {
+.results li:last-child {
+  border: none;
+}
+
+
+.results li:hover {
   font-size: 30px;
   background: #f6f6f6;
 }

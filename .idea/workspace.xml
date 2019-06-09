@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4ae9e0-6cfb-4716-a7fe-c92487ab26e7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CyberRATWeb/static/images/CyberRAT_background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CyberRATWeb/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CyberRATWeb/static/css/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CyberRATWeb/templates/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CyberRATWeb/templates/home.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/home.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CyberRatv1/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/results.html" afterPath="$PROJECT_DIR$/CyberRATWeb/templates/results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CyberRATWeb/models.py" afterPath="$PROJECT_DIR$/CyberRATWeb/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CyberRATWeb/urls.py" afterPath="$PROJECT_DIR$/CyberRATWeb/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CyberRATWeb/views.py" afterPath="$PROJECT_DIR$/CyberRATWeb/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CyberRatv1/settings.py" afterPath="$PROJECT_DIR$/CyberRatv1/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CyberRATWeb/static/css/main.css" afterPath="$PROJECT_DIR$/CyberRATWeb/static/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CyberRATWeb/templates/results.html" afterPath="$PROJECT_DIR$/CyberRATWeb/templates/results.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,8 +45,10 @@
         <entry file="file://$PROJECT_DIR$/CyberRATWeb/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-              <folding />
+              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="35" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +56,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CyberRATWeb/static/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="507" column="1" lean-forward="true" selection-start-line="507" selection-start-column="1" selection-end-line="507" selection-end-column="1" />
+            <state relative-caret-position="106">
+              <caret line="484" column="24" lean-forward="true" selection-start-line="484" selection-start-column="24" selection-end-line="484" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -126,9 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>search</find>
-      <find>S</find>
-      <find>Searc</find>
       <find>Search_</find>
       <find>CyberR</find>
       <find>color</find>
@@ -154,8 +142,11 @@
       <find>django-admin</find>
       <find>django-admi</find>
       <find>templates</find>
-      <find>template</find>
       <find>s01</find>
+      <find>center</find>
+      <find>result</find>
+      <find>template</find>
+      <find>te</find>
     </findStrings>
     <replaceStrings>
       <replace>search</replace>
@@ -181,8 +172,8 @@
         <option value="$PROJECT_DIR$/CyberRatv1/settings.py" />
         <option value="$PROJECT_DIR$/CyberRATWeb/templates/home.html" />
         <option value="$PROJECT_DIR$/CyberRATWeb/templates/base.html" />
-        <option value="$PROJECT_DIR$/CyberRATWeb/templates/results.html" />
         <option value="$PROJECT_DIR$/CyberRATWeb/forms.py" />
+        <option value="$PROJECT_DIR$/CyberRATWeb/templates/results.html" />
         <option value="$PROJECT_DIR$/CyberRATWeb/static/css/main.css" />
       </list>
     </option>
@@ -194,7 +185,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="217" />
+    <option name="x" value="193" />
     <option name="y" value="23" />
     <option name="width" value="1192" />
     <option name="height" value="804" />
@@ -236,52 +227,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="CyberRatv1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRATWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRATWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CyberRatv1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="CyberRatv1" />
@@ -534,13 +479,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="217" y="23" width="1192" height="804" extended-state="0" />
+    <frame x="193" y="23" width="1192" height="804" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37414965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37414965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25251678" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -591,7 +536,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -669,7 +616,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -887,13 +836,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CyberRATWeb/urls.py">
+    <entry file="file://$PROJECT_DIR$/CyberRATWeb/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -905,19 +852,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CyberRATWeb/forms.py">
+    <entry file="file://$PROJECT_DIR$/CyberRATWeb/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CyberRATWeb/templates/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -939,10 +880,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CyberRATWeb/templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CyberRATWeb/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="507" column="1" lean-forward="true" selection-start-line="507" selection-start-column="1" selection-end-line="507" selection-end-column="1" />
+        <state relative-caret-position="106">
+          <caret line="484" column="24" lean-forward="true" selection-start-line="484" selection-start-column="24" selection-end-line="484" selection-end-column="24" />
           <folding />
         </state>
       </provider>
