@@ -1,14 +1,17 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 import requests
+import json
+from bs4 import BeautifulSoup
 
 from CyberRATWeb.forms import EmailForm
 
 class Entity():
-    def __init__(self, name, breachNumber, breachedSites):
+    def __init__(self, name, breachNumber, breachedSites, facebook_data):
         self.name=name
         self.breachNumber = breachNumber
         self.breachedSites = breachedSites
+        self.facebook_data = facebook_data
 
 def home(request):
     form = EmailForm()
@@ -21,6 +24,7 @@ def results(request):
         if dataForm.is_valid():
             name = dataForm.cleaned_data['name']
             email = dataForm.cleaned_data['email']
+            profile_link=dataForm.cleaned_data['facebook_link']
         else:
             dataForm = EmailForm()
 
@@ -37,10 +41,30 @@ def results(request):
             result=[]
         return result
 
-    entity = Entity('', '', '')
+    def Facebook(profile_link):
+        result = []
+
+        try:
+            r=requests.get(url=profile_link)
+            soup = BeautifulSoup(r.text, "html.parser")
+            data = json.loads(soup.find('script', type='application/ld+json').text)
+            data1 = [element.text for element in soup.find_all("div", class_="_2lzr _50f5 _50f7")]
+
+            result.append('Lives in ' + data['address']['addressLocality'])
+            result.append('Affiliations include')
+            for i in range(len(data1)):
+                result.append(str(i+1) + ': ' + data1[i])
+        except:
+             result.append('Could not retrieve anything')
+        return result
+
+
+
+    entity = Entity('', '', '','')
 
     entity.name = name
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
+    entity.facebook_data = Facebook(profile_link)
 
     return render(request,'results.html', {'entity':entity})

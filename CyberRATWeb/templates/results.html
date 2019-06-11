@@ -23,6 +23,21 @@
             {% endif %}
             </p>
 
+            <p> Personal Information retrieved from Facebook</p>
+            {%  if entity.facebook_data %}
+
+
+            <p>
+                {%  for line in entity.facebook_data %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+
+            {%  else %}
+                <p>Good job on making secure account!</p>
+            {% endif %}
+
+
         </div>
     </div>
 
