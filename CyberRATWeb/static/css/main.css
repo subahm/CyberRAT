@@ -453,6 +453,21 @@ legend {
   box-sizing: border-box;
 }
 
+.container {
+  width: 100%; /* Full width */
+  background-color: #ddd; /* Grey background */
+}
+
+.skills {
+  text-align: right; /* Right-align text */
+  padding-top: 10px; /* Add top padding */
+  padding-bottom: 10px; /* Add bottom padding */
+  color: white; /* White text color */
+}
+
+.html {width: 90%; background-color: #4CAF50;} /* Green */
+
+
 .general {
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
