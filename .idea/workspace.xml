@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4ae9e0-6cfb-4716-a7fe-c92487ab26e7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CyberRatv1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CyberRatv1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CyberRATWeb/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CyberRATWeb/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CyberRATWeb/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CyberRATWeb/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CyberRATWeb/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/CyberRATWeb/templates/results.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CyberRATWeb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CyberRATWeb/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CyberRATWeb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="57" column="55" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
+            <state relative-caret-position="248">
+              <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -342,12 +337,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559852324595</updated>
-      <workItem from="1560288187124" duration="1367000" />
+      <workItem from="1560288187124" duration="1830000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1367000" />
+    <option name="totallyTimeSpent" value="1830000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -484,8 +479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CyberRATWeb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="57" column="55" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
+        <state relative-caret-position="248">
+          <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

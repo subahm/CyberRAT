@@ -51,9 +51,10 @@ def results(request):
             data1 = [element.text for element in soup.find_all("div", class_="_2lzr _50f5 _50f7")]
 
             result.append('Lives in ' + data['address']['addressLocality'])
-            result.append('Affiliations include')
-            for i in range(len(data1)):
-                result.append(str(i+1) + ': ' + data1[i])
+            if(data1):
+                result.append('Affiliations include')
+                for i in range(len(data1)):
+                    result.append(str(i+1) + ': ' + data1[i])
         except:
              result.append('Could not retrieve anything')
         return result
