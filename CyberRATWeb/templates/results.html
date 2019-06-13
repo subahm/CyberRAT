@@ -9,7 +9,7 @@
             <br>
             <p>Evaluation</p>
             <div class="container">
-                <div class="skills html">{{entity.threatLevel}}</div>
+                <div class="skills html" style="--radius: {{entity.threatLevel}}">{{entity.threatLevel}}</div>
             </div>
             <p> Hello {{entity.name}}</p>
             <p> You have been breached {{ entity.breachedSites | length }} times</p>

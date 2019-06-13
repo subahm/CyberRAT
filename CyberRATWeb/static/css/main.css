@@ -8,6 +8,7 @@ html {
   /* 2 */
 }
 
+
 /* Sections
    ========================================================================== */
 /**
@@ -465,7 +466,7 @@ legend {
   color: white; /* White text color */
 }
 
-.html {width: 90%; background-color: #4CAF50;} /* Green */
+.html {width: var(--radius); background-color: #4CAF50;} /* Green */
 
 
 .general {
