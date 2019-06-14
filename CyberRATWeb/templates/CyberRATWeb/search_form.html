@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'CyberRATWeb/base.html' %}
 
 {% block content %}
 
     <div class="s01">
-      <form action="results" method = "post">
+      <form method="POST" class="post-form">
           {%  csrf_token %}
         <fieldset>
           <legend>CyberRAT</legend>

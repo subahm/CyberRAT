@@ -1,10 +1,15 @@
 from django import forms
+from CyberRATWeb.models import Search
 
-class EmailForm(forms.Form):
-    name = forms.CharField(label='Name', max_length=100,
-                           widget=forms.TextInput(attrs={'class': "form-control", "placeholder": "name"}))
-    email = forms.CharField(label='Email ',
-                            max_length=100, widget=forms.TextInput(attrs={'class': "form-control", "placeholder": "email"}))
-    facebook_link = forms.CharField(label='Facebook_link ',
-                            max_length=200,
-                            widget=forms.TextInput(attrs={'class': "form-control", "placeholder": "facebook_link"}))
+
+class SearchForm(forms.ModelForm):
+    class Meta:
+        model = Search
+
+        fields = ('name', 'email', 'facebook_link')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': "form-control", "placeholder": "name"}),
+            'text': forms.TextInput(attrs={'class': "form-control", "placeholder": "email"}),
+            'facebook_link': forms.TextInput(attrs={'class': "form-control", "placeholder": "facebook_link"})
+        }

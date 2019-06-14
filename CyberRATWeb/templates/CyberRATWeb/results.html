@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'CyberRATWeb/base.html' %}
 
 {% block content %}
 
@@ -41,7 +41,10 @@
                 <p>Good job on making secure account!</p>
             {% endif %}
 
-
+            <form action="email/{{ pk }}/{{ entity }}/" method='POST'>
+                {% csrf_token %}
+                <button type='submit'>send results to email</button>
+            </form>
         </div>
     </div>
 

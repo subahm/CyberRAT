@@ -1,10 +1,15 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-import requests
 import json
-from bs4 import BeautifulSoup
 
-from CyberRATWeb.forms import EmailForm
+import requests
+from bs4 import BeautifulSoup
+from django.shortcuts import render, get_object_or_404, redirect
+from django.template.loader import render_to_string
+from django.views.generic import CreateView
+
+from CyberRATWeb.forms import SearchForm
+from CyberRATWeb.models import Search
+from CyberRATWeb.services.email_service import EmailService
+
 
 class Entity():
 
@@ -15,20 +20,19 @@ class Entity():
         self.facebook_data = facebook_data
         self.threatLevel = threatLevel
 
-def home(request):
-    form = EmailForm()
-    return render(request, 'home.html', {'form': form})
 
-def results(request):
+class HomeView(CreateView):
+    form_class = SearchForm
+    model = Search
+    redirect_field_name = 'results.html'
 
-    if request.method == "POST":
-        dataForm = EmailForm(request.POST)
-        if dataForm.is_valid():
-            name = dataForm.cleaned_data['name']
-            email = dataForm.cleaned_data['email']
-            profile_link=dataForm.cleaned_data['facebook_link']
-        else:
-            dataForm = EmailForm()
+
+def results(request, pk):
+
+    search = get_object_or_404(Search, pk=pk)
+    name = search.name
+    email = search.email
+    profile_link = search.facebook_link
 
     def checkHIBP(email):
         result= []
@@ -62,10 +66,7 @@ def results(request):
              result.append('Could not retrieve anything')
         return result
 
-
-
     entity = Entity('', '', '','','')
-
 
     entity.name = name
     entity.breachNumber = checkHIBP(email)
@@ -81,4 +82,16 @@ def results(request):
     else:
         entity.threatLevel = '100%'
 
-    return render(request,'results.html', {'entity':entity})
+    return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'pk': pk})
+
+
+def generateEmail(request, pk, entity):
+    search = get_object_or_404(Search, pk=pk)
+    email = search.email
+
+    site_html = render_to_string('CyberRATWeb/results.html', {'entity': entity, 'pk': pk})
+
+    email_service = EmailService.getInstance()
+    email_service.send_results(request, pk, email, site_html)
+
+    return redirect(request.META['HTTP_REFERER'])
