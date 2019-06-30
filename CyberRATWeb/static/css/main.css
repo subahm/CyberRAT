@@ -58,6 +58,19 @@
   background: #f6f6f6;
 }
 
+.skills {
+  text-align: right; /* Right-align text */
+  padding-top: 10px; /* Add top padding */
+  padding-bottom: 10px; /* Add bottom padding */
+  color: white; /* White text color */
+}
+
+.html {width: var(--radius); background-color: #4CAF50;} /* Green */
+
+.bar-container {
+  width: 100%; /* Full width */
+  background-color: #ddd; /* Grey background */
+}
 /* ==========================================================================
    #GRID
    ========================================================================== */
@@ -104,11 +117,21 @@
  * More sensible default box-sizing:
  * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
  */
-html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+/*html {*/
+  /*-webkit-box-sizing: border-box;*/
+  /*-moz-box-sizing: border-box;*/
+  /*box-sizing: border-box;*/
+/*}*/
+
+/*html {*/
+  /*line-height: 1.15;*/
+  /*!* 1 *!*/
+  /*-ms-text-size-adjust: 100%;*/
+  /*!* 2 *!*/
+  /*-webkit-text-size-adjust: 100%;*/
+  /*!* 2 *!*/
+/*}*/
+
 
 * {
   padding: 0;

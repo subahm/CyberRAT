@@ -8,7 +8,7 @@
             <legend> CyberRAT </legend>
             <br>
             <p>Evaluation</p>
-            <div class="container">
+            <div class="bar-container">
                 <div class="skills html" style="--radius: {{entity.threatLevel}}">{{entity.threatLevel}}</div>
             </div>
             <p> Hello {{entity.name}}</p>
@@ -43,7 +43,7 @@
 
             <form action="email/{{ pk }}/{{ entity }}/" method='POST'>
                 {% csrf_token %}
-                <button type='submit'>send results to email</button>
+                <button type='submit' class="btn-submit m-b-0" >send results to email</button>
             </form>
         </div>
     </div>
