@@ -9,7 +9,7 @@ class SearchForm(forms.ModelForm):
         fields = ('name', 'email', 'facebook_link')
 
         widgets = {
-            'name': forms.TextInput(attrs={'class': "form-control", "placeholder": "name"}),
-            'text': forms.TextInput(attrs={'class': "form-control", "placeholder": "email"}),
-            'facebook_link': forms.TextInput(attrs={'class': "form-control", "placeholder": "facebook_link"})
+            'name': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "name"}),
+            'email': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "email"}),
+            'facebook_link': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "facebook link"})
         }

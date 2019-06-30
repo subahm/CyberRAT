@@ -2,25 +2,40 @@
 
 {% block content %}
 
-    <div class="s01">
-      <form method="POST" class="post-form">
-          {%  csrf_token %}
-        <fieldset>
-          <legend>CyberRAT</legend>
-        </fieldset>
-        <div class="inner-form">
-          <div class="input-field first-wrap">
-            {{ form.name }}
-          </div>
-          <div class="input-field second-wrap">
-            {{ form.email }}
-            {{ form.facebook_link }}
-          </div>
-          <div class="input-field third-wrap">
-            <button type="submit" class="btn-search">Search</button>
-          </div>
-        </div>
-      </form>
-    </div><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-body">
+                    <form method="POST">
+                        {%  csrf_token %}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Name</label>
+                                    {{ form.name }}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">FaceBook Link</label>
+                                    {{ form.facebook_link }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <button class="btn-submit m-b-0" type="submit">search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 {% endblock %}
