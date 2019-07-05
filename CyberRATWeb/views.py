@@ -13,11 +13,12 @@ from CyberRATWeb.services.email_service import EmailService
 
 class Entity():
 
-    def __init__(self, name, breachNumber, breachedSites, facebook_data, threatLevel):
+    def __init__(self, name, breachNumber, breachedSites, facebook_data, linkedin_data, threatLevel):
         self.name=name
         self.breachNumber = breachNumber
         self.breachedSites = breachedSites
         self.facebook_data = facebook_data
+        self.linkedin_data = linkedin_data
         self.threatLevel = threatLevel
 
 
@@ -33,6 +34,7 @@ def results(request, pk):
     name = search.name
     email = search.email
     profile_link = search.facebook_link
+    linkedin_profile_link = search.linkedin_link
 
     def checkHIBP(email):
         result= []
@@ -66,12 +68,31 @@ def results(request, pk):
              result.append('Could not retrieve anything')
         return result
 
-    entity = Entity('', '', '','','')
+    def Linkedin(linkedin_profile_link):
+        result = []
+
+        try:
+            r=requests.get(url=linkedin_profile_link)
+            soup = BeautifulSoup(r.text, "html.parser")
+            data = json.loads(soup.find('script', type='application/ld+json').text)
+            data1 = [element.text for element in soup.find_all("div", class_="result-card__title experience-item__title")]
+
+            result.append('Lives in ' + data['address']['addressLocality'])
+            if(data1):
+                result.append('Affiliations include')
+                for i in range(len(data1)):
+                    result.append(str(i+1) + ': ' + data1[i])
+        except:
+             result.append('Could not retrieve anything')
+        return result
+
+    entity = Entity('', '', '','','','')
 
     entity.name = name
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
+    entity.linkedin_data = Linkedin(linkedin_profile_link)
 
     if (len(entity.breachNumber) <= 0):
         entity.threatLevel = '0%'

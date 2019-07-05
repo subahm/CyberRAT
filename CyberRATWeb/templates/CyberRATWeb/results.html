@@ -41,6 +41,21 @@
                 <p>Good job on making secure account!</p>
             {% endif %}
 
+
+            <p> Personal Information retrieved from Linkedin</p>
+            {%  if entity.linkedin_data %}
+
+
+            <p>
+                {%  for line in entity.linkedin_data %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+
+            {%  else %}
+                <p>Good job on making secure account!</p>
+            {% endif %}
+
             <form action="email/{{ pk }}/{{ entity }}/" method='POST'>
                 {% csrf_token %}
                 <button type='submit' class="btn-submit m-b-0" >send results to email</button>
