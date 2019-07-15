@@ -56,7 +56,7 @@
                 <p>Good job on making secure account!</p>
             {% endif %}
 
-            <form action="email/{{ pk }}/{{ entity }}/" method='POST'>
+            <form action="email/{{ uuid }}/{{ entity }}/" method='POST'>
                 {% csrf_token %}
                 <button type='submit' class="btn-submit m-b-0" >send results to email</button>
             </form>

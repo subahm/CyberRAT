@@ -5,8 +5,8 @@ from . import views
 
 urlpatterns = [
     url('^$', views.HomeView.as_view(), name='search_form'),
-    url('^results/(?P<pk>\d+)$', views.results, name='results'),
-    url('^results/email/(?P<pk>\d+)/(?P<entity>.+)/$', views.generateEmail, name='generate_email')
+    url('^results/(?P<uuid>.+)$', views.results, name='results'),
+    url('^results/email/(?P<uuid>.+)/(?P<entity>.+)/$', views.generateEmail, name='generate_email')
 ]
 
 # instantiate email service singleton

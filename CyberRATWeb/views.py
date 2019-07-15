@@ -28,16 +28,16 @@ class HomeView(CreateView):
     redirect_field_name = 'results.html'
 
 
-def results(request, pk):
+def results(request, uuid):
 
-    search = get_object_or_404(Search, pk=pk)
+    search = get_object_or_404(Search, uuid=uuid)
     name = search.name
     email = search.email
     profile_link = search.facebook_link
     linkedin_profile_link = search.linkedin_link
 
     def checkHIBP(email):
-        result= []
+        result=[]
         url = 'https://haveibeenpwned.com/api/v2/breachedaccount/'+email
 
         resp = requests.get(url=url)
@@ -103,16 +103,16 @@ def results(request, pk):
     else:
         entity.threatLevel = '100%'
 
-    return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'pk': pk})
+    return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid})
 
 
-def generateEmail(request, pk, entity):
-    search = get_object_or_404(Search, pk=pk)
+def generateEmail(request, uuid, entity):
+    search = get_object_or_404(Search, uuid=uuid)
     email = search.email
 
-    site_html = render_to_string('CyberRATWeb/results.html', {'entity': entity, 'pk': pk})
+    site_html = render_to_string('CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid})
 
     email_service = EmailService.getInstance()
-    email_service.send_results(request, pk, email, site_html)
+    email_service.send_results(request, uuid, email, site_html)
 
     return redirect(request.META['HTTP_REFERER'])
