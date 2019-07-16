@@ -40,7 +40,9 @@ class EmailService:
     def __del__(self):
         self.server.quit()
 
-    def send_results(self, request, pk, email_address, site_html):
+    def send_results(self, request, uuid, email_address, site_html):
+        print("IN GEN")
+        print(uuid)
         sender_email = "cyberratresults@gmail.com"
         receiver_email = email_address
 
@@ -56,7 +58,7 @@ class EmailService:
         """
 
         site_url = request.build_absolute_uri('/results/')
-        site_url = site_url + pk
+        site_url = site_url + uuid
         text = text + site_url
 
         part1 = MIMEText(text, "plain")
@@ -64,7 +66,7 @@ class EmailService:
 
         # add pdf to email
         # must install from https://wkhtmltopdf.org/downloads.html for respective os to generate pdfs
-        pdf_location = "Resources/EmailHub/cyber_rat_results-" + pk + ".pdf"
+        pdf_location = "Resources/EmailHub/cyber_rat_results-" + uuid + ".pdf"
         pdfkit.from_string(site_html, pdf_location, css="CyberRATWeb/static/css/main.css")
 
         with open(pdf_location, "rb") as opened:
