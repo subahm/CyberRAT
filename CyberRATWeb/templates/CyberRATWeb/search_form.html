@@ -1,7 +1,9 @@
 {% extends 'CyberRATWeb/base.html' %}
 
 {% block content %}
-
+    <div class="header">
+        <h1>CyberRAT</h1>
+    </div>
     <div class="wrapper wrapper--w900">
             <div class="card card-6">
                 <div class="card-body">
@@ -15,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="input-group">
+                                <div style="margin-left:2.5em" class="input-group">
                                     <label class="label">Email</label>
                                     {{ form.email }}
                                 </div>
@@ -28,10 +30,8 @@
                                     {{ form.facebook_link }}
                                 </div>
                             </div>
-                        </div>
-                        <div class="row row-space">
                             <div class="col-2">
-                                <div class="input-group">
+                                <div style="margin-left:2.5em" class="input-group">
                                     <label class="label">Linkedin Link</label>
                                     {{ form.linkedin_link }}
                                 </div>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
-                                <button class="btn-submit m-b-0" type="submit">search</button>
+                                <button style="margin-left: 50%" class="btn-submit m-b-0" type="submit">search</button>
                             </div>
                         </div>
                     </form>

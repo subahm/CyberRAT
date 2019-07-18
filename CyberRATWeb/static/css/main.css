@@ -261,6 +261,20 @@ a:active {
   text-decoration: none;
 }
 
+.header img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.header h1 {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+
+}
+
 /* ==========================================================================
    #SPACING
    ========================================================================== */
