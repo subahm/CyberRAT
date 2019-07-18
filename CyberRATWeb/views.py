@@ -44,9 +44,14 @@ def results(request, uuid):
 
     def checkHIBP(email):
         result=[]
-        url = 'https://haveibeenpwned.com/api/v2/breachedaccount/'+email
+        headers = {
+                 'hibp-api-key': '4d56711edb2c4b72b8a418ea2c558d41',
+                 'user-agent': 'CyberRat'
+        }
+        
+        url = 'https://haveibeenpwned.com/api/v3/breachedaccount/'+email+'?truncateResponse=False'
 
-        resp = requests.get(url=url)
+        resp = requests.get(url=url,headers=headers)
         try:
             data = resp.json()
             for i in range(len(data)):
