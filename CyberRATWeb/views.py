@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import render_to_string
 from django.views.generic import CreateView
+from django.http import Http404
+
 
 from CyberRATWeb.forms import SearchForm
 from CyberRATWeb.models import Search
@@ -30,7 +32,11 @@ class HomeView(CreateView):
 
 def results(request, uuid):
 
-    search = get_object_or_404(Search, uuid=uuid)
+    try:
+        search = get_object_or_404(Search, uuid=uuid)
+    except ValueError:
+        raise Http404
+
     name = search.name
     email = search.email
     profile_link = search.facebook_link
@@ -107,7 +113,11 @@ def results(request, uuid):
 
 
 def generateEmail(request, uuid, entity):
-    search = get_object_or_404(Search, uuid=uuid)
+    try:
+        search = get_object_or_404(Search, uuid=uuid)
+    except ValueError:
+        raise Http404
+
     email = search.email
 
     site_html = render_to_string('CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid})

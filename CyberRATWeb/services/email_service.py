@@ -41,8 +41,6 @@ class EmailService:
         self.server.quit()
 
     def send_results(self, request, uuid, email_address, site_html):
-        print("IN GEN")
-        print(uuid)
         sender_email = "cyberratresults@gmail.com"
         receiver_email = email_address
 

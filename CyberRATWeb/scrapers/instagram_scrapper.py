@@ -9,24 +9,29 @@ from .timeline_post import TimelinePost
 
 def get_instagram_posts(profile_link):
     c = webdriver.Chrome()
+
     try:
         c.get(profile_link)
+    except:
+        print('failed to obtain posts from instagram timeline')
+        return []
 
-        element = c.find_element_by_tag_name('body') # or whatever tag you're looking to scrape from
+    element = c.find_element_by_tag_name('body') # or whatever tag you're looking to scrape from
 
-        for i in range(10):
-            element.send_keys(Keys.END)
-            time.sleep(0.5)
+    for i in range(10):
+        element.send_keys(Keys.END)
+        time.sleep(0.5)
 
-        soup = BeautifulSoup(c.page_source, 'html.parser')
+    soup = BeautifulSoup(c.page_source, 'html.parser')
 
-        post_urls = []
-        for a in soup.find_all('a'):
-            if '/p/' in a['href']:
-                post_urls.append(profile_link + a['href'])
+    post_urls = []
+    for a in soup.find_all('a'):
+        if '/p/' in a['href']:
+            post_urls.append(profile_link + a['href'][1:])
 
-        result = []
-        for post_url in post_urls:
+    result = []
+    for post_url in post_urls:
+        try:
             page = urlopen(post_url).read()
             data = BeautifulSoup(page, 'html.parser')
             body = data.find('body')
@@ -42,8 +47,8 @@ def get_instagram_posts(profile_link):
                     posts['shortcode_media']['display_url']
                 )
             )
-    except:
-        print('failed to obtain posts from instagram timeline')
-        return []
+        except:
+            print("post url no accessible\n")
+            pass
 
     return result
