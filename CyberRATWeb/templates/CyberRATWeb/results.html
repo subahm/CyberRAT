@@ -42,19 +42,18 @@
             {% endif %}
 
 
-            <p> Personal Information retrieved from Linkedin</p>
-            {%  if entity.linkedin_data %}
-
-
             <p>
-                {%  for line in entity.linkedin_data %}
-                    {{ line }}<br>
-                {% endfor %}
-            </p>
+                <p> What was the name of your first dog?</p>
+                {% if entity.time_line_data.post_containing_dog_name %}
+                    {{ entity.time_line_data.post_containing_dog_name }}<br>
+                {% endif %}
 
-            {%  else %}
-                <p>Good job on making secure account!</p>
-            {% endif %}
+                <p> What is your mothers maiden name?</p>
+                {% if entity.time_line_data.post_containing_mothers_maiden %}
+                    {{ entity.time_line_data.post_containing_mothers_maiden }}<br>
+                {% endif %}
+
+            </p>
 
             <form action="email/{{ uuid }}/{{ entity }}/" method='POST'>
                 {% csrf_token %}

@@ -7,7 +7,8 @@ from django.template.loader import render_to_string
 from django.views.generic import CreateView
 from django.http import Http404
 
-
+from CyberRATWeb.scrapers.instagram_scrapper import get_instagram_posts
+from CyberRATWeb.services.timeline_analyzer import TimeLineAnalysisResults
 from CyberRATWeb.forms import SearchForm
 from CyberRATWeb.models import Search
 from CyberRATWeb.services.email_service import EmailService
@@ -15,12 +16,12 @@ from CyberRATWeb.services.email_service import EmailService
 
 class Entity():
 
-    def __init__(self, name, breachNumber, breachedSites, facebook_data, linkedin_data, threatLevel):
+    def __init__(self, name, breachNumber, breachedSites, facebook_data, time_line_data, threatLevel):
         self.name=name
         self.breachNumber = breachNumber
         self.breachedSites = breachedSites
         self.facebook_data = facebook_data
-        self.linkedin_data = linkedin_data
+        self.time_line_data = time_line_data
         self.threatLevel = threatLevel
 
 
@@ -40,7 +41,7 @@ def results(request, uuid):
     name = search.name
     email = search.email
     profile_link = search.facebook_link
-    linkedin_profile_link = search.linkedin_link
+    instagram_link = search.instagram_link
 
     def checkHIBP(email):
         result=[]
@@ -79,23 +80,25 @@ def results(request, uuid):
              result.append('Could not retrieve anything')
         return result
 
-    def Linkedin(linkedin_profile_link):
-        result = []
+    # def Linkedin(linkedin_profile_link):
+    #     result = []
+    #
+    #     try:
+    #         r=requests.get(url=linkedin_profile_link)
+    #         soup = BeautifulSoup(r.text, "html.parser")
+    #         data = json.loads(soup.find('script', type='application/ld+json').text)
+    #         data1 = [element.text for element in soup.find_all("div", class_="result-card__title experience-item__title")]
+    #
+    #         result.append('Lives in ' + data['address']['addressLocality'])
+    #         if(data1):
+    #             result.append('Affiliations include')
+    #             for i in range(len(data1)):
+    #                 result.append(str(i+1) + ': ' + data1[i])
+    #     except:
+    #          result.append('Could not retrieve anything')
+    #     return result
 
-        try:
-            r=requests.get(url=linkedin_profile_link)
-            soup = BeautifulSoup(r.text, "html.parser")
-            data = json.loads(soup.find('script', type='application/ld+json').text)
-            data1 = [element.text for element in soup.find_all("div", class_="result-card__title experience-item__title")]
-
-            result.append('Lives in ' + data['address']['addressLocality'])
-            if(data1):
-                result.append('Affiliations include')
-                for i in range(len(data1)):
-                    result.append(str(i+1) + ': ' + data1[i])
-        except:
-             result.append('Could not retrieve anything')
-        return result
+    time_line_data = get_instagram_posts(instagram_link)
 
     entity = Entity('', '', '','','','')
 
@@ -103,7 +106,12 @@ def results(request, uuid):
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
-    entity.linkedin_data = Linkedin(linkedin_profile_link)
+    entity.time_line_data = TimeLineAnalysisResults(time_line_data)
+
+    print("THIS IS THING")
+    print(entity.time_line_data.post_containing_dog_name)
+    print(entity.time_line_data.post_containing_mothers_maiden)
+
 
     if (len(entity.breachNumber) <= 0):
         entity.threatLevel = '0%'

@@ -6,11 +6,11 @@ class SearchForm(forms.ModelForm):
     class Meta:
         model = Search
 
-        fields = ('name', 'email', 'facebook_link', 'linkedin_link')
+        fields = ('name', 'email', 'facebook_link', 'instagram_link')
 
         widgets = {
             'name': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "name"}),
             'email': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "email"}),
             'facebook_link': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "facebook link"}),
-            'linkedin_link': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "linkedin link"})
+            'instagram_link': forms.TextInput(attrs={'class': "input--style-1", "placeholder": "instagram link"})
         }

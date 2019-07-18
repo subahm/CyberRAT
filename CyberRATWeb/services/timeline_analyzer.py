@@ -1,6 +1,12 @@
 import spacy
-from CyberRatv1.CyberRATWeb.scrapers.timeline_post import TimelinePost
 
+class TimeLineAnalysisResults:
+    post_containing_dog_name = None
+    post_containing_mothers_maiden = None
+
+    def __init__(self, time_line_posts):
+        self.post_containing_dog_name = scan_for_dog_name(time_line_posts)
+        self.post_containing_mothers_maiden = scan_for_mothers_maiden(time_line_posts)
 
 # test image/ text for dog and then nlp for names
 def scan_for_dog_name(time_line_posts):
@@ -16,16 +22,22 @@ def scan_for_dog_name(time_line_posts):
 
             dog_similarity = 0
             for token in doc:
-                dog_similarity = dog_similarity + token.similarity(dog_token)
+                token_similarity = token.similarity(dog_token)
+                if token_similarity > 0.9:
+                    dog_similarity = token_similarity
+                    dog_token = True
+                    break
+                else:
+                    dog_similarity = dog_similarity + token_similarity
 
             dog_similarity = dog_similarity/len(doc)
 
             if dog_similarity > max:
-                probable_post_containing_dog_name = doc.text
+                post_containing_dog_name = doc.text
                 max = dog_similarity
 
 
-    return probable_post_containing_dog_name
+    return post_containing_dog_name
 
 def scan_for_mothers_maiden(time_line_posts):
 
@@ -58,14 +70,12 @@ def scan_for_mothers_maiden(time_line_posts):
             if not key_word_found:
                 grandma_similarity = grandma_similarity / len(doc)
 
-            print(grandma_similarity)
-
             if grandma_similarity > max:
-                probable_post_containing_mothers_maiden = doc.text
+                post_containing_mothers_maiden = doc.text
                 max = grandma_similarity
 
 
-    return probable_post_containing_mothers_maiden
+    return post_containing_mothers_maiden
 
 # any streets or raods you grew up on
 
