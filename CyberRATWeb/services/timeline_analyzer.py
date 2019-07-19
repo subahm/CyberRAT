@@ -5,8 +5,9 @@ class TimeLineAnalysisResults:
     post_containing_mothers_maiden = None
 
     def __init__(self, time_line_posts):
-        self.post_containing_dog_name = scan_for_dog_name(time_line_posts)
-        self.post_containing_mothers_maiden = scan_for_mothers_maiden(time_line_posts)
+        if time_line_posts:
+            self.post_containing_dog_name = scan_for_dog_name(time_line_posts)
+            self.post_containing_mothers_maiden = scan_for_mothers_maiden(time_line_posts)
 
 # test image/ text for dog and then nlp for names
 def scan_for_dog_name(time_line_posts):

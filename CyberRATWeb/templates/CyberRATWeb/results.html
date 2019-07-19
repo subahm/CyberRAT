@@ -55,11 +55,19 @@
 
             </p>
 
-            <form action="email/{{ uuid }}/{{ entity }}/" method='POST'>
+            <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
                 {% csrf_token %}
-                <button type='submit' class="btn-submit m-b-0" >send results to email</button>
+                <button type='submit' id="submit" class="btn-submit m-b-0" >send results to email</button>
+                <div id="loader" style="position: relative"></div>
             </form>
         </div>
     </div>
+
+    <script>
+        function showSpinner() {
+          document.getElementById("loader").style.visibility = "visible";
+          document.getElementById("submit").style.visibility = "hidden";
+        }
+    </script>
 
 {% endblock %}

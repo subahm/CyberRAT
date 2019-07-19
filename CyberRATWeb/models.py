@@ -5,7 +5,7 @@ import uuid
 class Search(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
-    facebook_link = models.CharField(max_length=200)
+    facebook_link = models.CharField(max_length=200, default='')
     instagram_link = models.CharField(max_length=200, default='')
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
