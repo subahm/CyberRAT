@@ -6,9 +6,10 @@ import time
 from urllib.request import urlopen
 import json
 from .timeline_post import TimelinePost
+from webdriver_manager.chrome import ChromeDriverManager
 
 def get_instagram_posts(profile_link):
-    c = webdriver.Chrome()
+    c = webdriver.Chrome(ChromeDriverManager().install())
 
     try:
         c.get(profile_link)

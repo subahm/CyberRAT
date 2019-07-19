@@ -262,7 +262,6 @@ a:active {
 }
 
 .header img {
-  float: left;
   width: 100px;
   height: 100px;
   background: #555;
@@ -272,6 +271,11 @@ a:active {
   position: relative;
   text-align: center;
   padding: 20px;
+  top: -50px;
+  font-size: 72px;
+  line-height: 1;
+  color: black;
+  margin-bottom: 30px;
 
 }
 
@@ -992,6 +996,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 10px;
   background: transparent;
   position: relative;
+  top: -50px;
 }
 
 .card-6:before {
