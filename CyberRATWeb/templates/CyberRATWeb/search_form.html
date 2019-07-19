@@ -1,13 +1,15 @@
 {% extends 'CyberRATWeb/base.html' %}
 
 {% block content %}
+
+
     <div class="header">
         <h1>CyberRAT</h1>
     </div>
     <div class="wrapper wrapper--w900">
             <div class="card card-6">
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" onsubmit="showSpinner()">
                         {%  csrf_token %}
                         <div class="row row-space">
                             <div class="col-2">
@@ -37,13 +39,23 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row row-space">
                             <div class="col-2">
-                                <button style="margin-left: 50%" class="btn-submit m-b-0" type="submit">search</button>
+                                <button style="margin-left: 50%" id="submit" class="btn-submit m-b-0" type="submit">search</button>
                             </div>
+                            <div id="loader" style="position: absolute"></div>
                         </div>
                     </form>
                 </div>
             </div> <!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+
+            <script>
+                function showSpinner() {
+                  document.getElementById("loader").style.visibility = "visible";
+                  document.getElementById("submit").style.visibility = "hidden";
+                }
+            </script>
 
 {% endblock %}
