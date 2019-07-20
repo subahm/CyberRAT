@@ -43,15 +43,54 @@
 
 
             <p>
+                Following are some of the most common security questions. Are you using these questions and do the following posts reveal your answers?
+
                 <p> What was the name of your first dog?</p>
                 {% if entity.time_line_data.post_containing_dog_name %}
-                    {{ entity.time_line_data.post_containing_dog_name }}<br>
+                    <img src="{{ entity.time_line_data.post_containing_dog_name.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_dog_name.post_text }}<br>
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
                 {% endif %}
+
 
                 <p> What is your mothers maiden name?</p>
                 {% if entity.time_line_data.post_containing_mothers_maiden %}
-                    {{ entity.time_line_data.post_containing_mothers_maiden }}<br>
+                    <img src="{{ entity.time_line_data.post_containing_mothers_maiden.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_mothers_maiden.post_text }}<br>
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
                 {% endif %}
+
+                <p>locations are often the answer to security questions ex. where did you meet your spouse? where is your favorite place to vacation?</p>
+                {% if entity.time_line_data.posts_containing_city_names %}
+                        {%  for post in entity.time_line_data.posts_containing_city_names %}
+                            <img src="{{ post.image_url }}" style="width:400px;height:400px;"><br>
+                            {{ post.post_text }}<br>
+                        {% endfor %}
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+                <p> What street did you grow up on?</p>
+                {% if entity.time_line_data.post_containing_street %}
+                    <img src="{{ entity.time_line_data.post_containing_street.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_street.post_text }}<br>
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+
+                <p> What is your favourite book?</p>
+                {% if entity.time_line_data.post_containing_book %}
+
+                    <img src="{{ entity.time_line_data.post_containing_book.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_book.post_text }}<br>
+
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
 
             </p>
 

@@ -1,8 +1,9 @@
 import unittest
 from CyberRatv1.CyberRATWeb.scrapers.instagram_scrapper import get_instagram_posts
-from CyberRatv1.CyberRATWeb.scrapers.timeline_post import TimelinePost
 
-from CyberRatv1.CyberRATWeb.services.timeline_analyzer import scan_for_dog_name, scan_for_mothers_maiden
+from CyberRatv1.CyberRATWeb.services.timeline_analyzer import scan_for_dog_name,\
+    scan_for_mothers_maiden, scan_for_city_names,\
+    scan_for_street_name, scan_for_favourite_book
 
 class Tests(unittest.TestCase):
 
@@ -26,7 +27,31 @@ class Tests(unittest.TestCase):
 
         print("MOTHERS MAIDEN\n"+mothers_maiden)
 
-        self.assertTrue(mothers_maiden is not None)
+
+    def test_gather_locations(self):
+        results = get_instagram_posts('https://www.instagram.com/johnyboysmith1992/')
+        city_names = scan_for_city_names(results)
+
+        print(city_names)
+
+        self.assertTrue(city_names is not None)
+
+
+    def test_for_street_name(self):
+        results = get_instagram_posts('https://www.instagram.com/johnyboysmith1992/')
+        street_name = scan_for_street_name(results)
+        print(street_name)
+
+        self.assertTrue(street_name is not None)
+
+    def test_favourite_book(self):
+        results = get_instagram_posts('https://www.instagram.com/johnyboysmith1992/')
+        favourite_book = scan_for_favourite_book(results)
+
+        print(favourite_book)
+
+        self.assertTrue(favourite_book is not None)
+
 
 if __name__ == '__main__':
     unittest.main()

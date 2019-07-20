@@ -15,6 +15,7 @@ def get_instagram_posts(profile_link):
         c.get(profile_link)
     except:
         print('failed to obtain posts from instagram timeline')
+        c.close()
         return []
 
     element = c.find_element_by_tag_name('body') # or whatever tag you're looking to scrape from
@@ -51,5 +52,7 @@ def get_instagram_posts(profile_link):
         except:
             print("post url no accessible\n")
             pass
+
+    c.close()
 
     return result
