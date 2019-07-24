@@ -5,13 +5,13 @@
     <div style="text-align: center;">
         <div class="results">
 
-            <legend> CyberRAT </legend>
+            <legend> Assessment Report </legend>
             <br>
-            <p>Evaluation</p>
+            <p> Hello {{entity.name}}, your vulnerability score is:</p>
             <div class="bar-container">
                 <div class="skills html" style="--radius: {{entity.threatLevel}}">{{entity.threatLevel}}</div>
             </div>
-            <p> Hello {{entity.name}}</p>
+
             <p> You have been breached {{ entity.breachedSites | length }} times</p>
             {%  if entity.breachedSites %}
 
@@ -30,13 +30,13 @@
             <p> Personal Information retrieved from Facebook</p>
             {%  if entity.facebook_data %}
 
-
+            {% autoescape off %}
             <p>
                 {%  for line in entity.facebook_data %}
                     {{ line }}<br>
                 {% endfor %}
             </p>
-
+            {% endautoescape %}
             {%  else %}
                 <p>Good job on making secure account!</p>
             {% endif %}

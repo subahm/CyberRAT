@@ -1,0 +1,66 @@
+{% extends 'CyberRATWeb/base.html' %}
+
+{% block content %}
+
+    <div style="text-align: center;">
+        <div class="results">
+
+            <legend> CyberRAT </legend>
+            <br>
+            <p>Evaluation</p>
+            <div class="bar-container">
+                <div class="skills html" style="--radius: {{entity.threatLevel}}">{{entity.threatLevel}}</div>
+            </div>
+            <p> Hello {{entity.name}}</p>
+            <p> You have been breached {{ entity.breachedSites | length }} times</p>
+            {%  if entity.breachedSites %}
+
+            <p> Make sure you never use the passwords you used in: <br>
+                <ul>
+                    {%  for site in entity.breachedSites %}
+                        <li> {{ site }}</li>
+                    {% endfor %}
+                </ul>
+
+            {%  else %}
+                <p>Good job on making secure passwords!</p>
+            {% endif %}
+            </p>
+
+            <p> Personal Information retrieved from Facebook</p>
+            {%  if entity.facebook_data %}
+
+
+            <p>
+                {%  for line in entity.facebook_data %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+
+            {%  else %}
+                <p>Good job on making secure account!</p>
+            {% endif %}
+
+
+            <p> Personal Information retrieved from Linkedin</p>
+            {%  if entity.linkedin_data %}
+
+
+            <p>
+                {%  for line in entity.linkedin_data %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+
+            {%  else %}
+                <p>Good job on making secure account!</p>
+            {% endif %}
+
+            <form action="email/{{ uuid }}/{{ entity }}/" method='POST'>
+                {% csrf_token %}
+                <button type='submit' class="btn-submit m-b-0" >send results to email</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

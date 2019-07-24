@@ -70,12 +70,13 @@ def results(request, uuid):
             soup = BeautifulSoup(r.text, "html.parser")
             data = json.loads(soup.find('script', type='application/ld+json').text)
             data1 = [element.text for element in soup.find_all("div", class_="_2lzr _50f5 _50f7")]
+            data2 = [element.text for element in soup.find_all("div", class_="fsm fwn fcg")]
 
             result.append('Lives in ' + data['address']['addressLocality'])
             if(data1):
-                result.append('Affiliations include')
+                result.append('Affiliations with')
                 for i in range(len(data1)):
-                    result.append(str(i+1) + ': ' + data1[i])
+                    result.append('<b>' + data1[i] + '</b>' + ': ' + data2[i])
         except:
              result.append('Could not retrieve anything')
         return result
@@ -106,11 +107,11 @@ def results(request, uuid):
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
-    entity.time_line_data = TimeLineAnalysisResults(time_line_data)
+    #entity.time_line_data = TimeLineAnalysisResults(time_line_data)
 
-    print("THIS IS THING")
-    print(entity.time_line_data.post_containing_dog_name)
-    print(entity.time_line_data.post_containing_mothers_maiden)
+    # print("THIS IS THING")
+    # print(entity.time_line_data.post_containing_dog_name)
+    # print(entity.time_line_data.post_containing_mothers_maiden)
 
 
     if (len(entity.breachNumber) <= 0):
