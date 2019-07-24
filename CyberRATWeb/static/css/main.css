@@ -192,10 +192,10 @@ iframe {
 }
 
 .wrap-contact100 {
-  width: 1170px;
+  width: 800px;
   background: #fff;
   border-radius: 10px;
-  padding: 82px 180px 33px 180px;
+  padding: 5px 5px 5px 5px;
   position: relative;
   display: none;
 }
