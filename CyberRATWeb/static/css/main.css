@@ -177,7 +177,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: transparent;
+  background: #0000008f;
   position: relative;
   z-index: 1;
 }
