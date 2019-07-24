@@ -16,13 +16,14 @@ from CyberRATWeb.services.email_service import EmailService
 
 class Entity():
 
-    def __init__(self, name, breachNumber, breachedSites, facebook_data, time_line_data, threatLevel):
+    def __init__(self, name, breachNumber, breachedSites, facebook_data, time_line_data, threatLevel, profilePhoto):
         self.name=name
         self.breachNumber = breachNumber
         self.breachedSites = breachedSites
         self.facebook_data = facebook_data
         self.time_line_data = time_line_data
         self.threatLevel = threatLevel
+        self.profilePhoto = profilePhoto
 
 
 class HomeView(CreateView):
@@ -81,6 +82,18 @@ def results(request, uuid):
              result.append('Could not retrieve anything')
         return result
 
+    def ProfilePhoto(profile_link):
+        result=''
+        try:
+            r = requests.get(url=profile_link)
+            soup = BeautifulSoup(r.text, "html.parser")
+            images = soup.find('img', class_="_11kf img")
+            result=images['src']
+        except:
+            result=''
+
+        return result
+
     # def Linkedin(linkedin_profile_link):
     #     result = []
     #
@@ -101,13 +114,14 @@ def results(request, uuid):
 
     time_line_data = get_instagram_posts(instagram_link)
 
-    entity = Entity('', '', '','','','')
+    entity = Entity('', '', '','','','', '')
 
     entity.name = name
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
     #entity.time_line_data = TimeLineAnalysisResults(time_line_data)
+    entity.profilePhoto = ProfilePhoto(profile_link)
 
     # print("THIS IS THING")
     # print(entity.time_line_data.post_containing_dog_name)

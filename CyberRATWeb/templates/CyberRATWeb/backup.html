@@ -1,0 +1,112 @@
+{% extends 'CyberRATWeb/base.html' %}
+
+{% block content %}
+
+    <div style="text-align: center;">
+        <div class="results">
+
+            <legend> Assessment Report </legend>
+            <br>
+            <p> Hello {{entity.name}}, your vulnerability score is:</p>
+            <div class="bar-container">
+                <div class="skills html" style="--radius: {{entity.threatLevel}}">{{entity.threatLevel}}</div>
+            </div>
+
+            <p> You have been breached {{ entity.breachedSites | length }} times</p>
+            {%  if entity.breachedSites %}
+
+            <p> Make sure you never use the passwords you used in: <br>
+                <ul>
+                    {%  for site in entity.breachedSites %}
+                        <li> {{ site }}</li>
+                    {% endfor %}
+                </ul>
+
+            {%  else %}
+                <p>Good job on making secure passwords!</p>
+            {% endif %}
+            </p>
+
+            <p> Personal Information retrieved from Facebook</p>
+            {%  if entity.facebook_data %}
+
+            {% autoescape off %}
+            <p>
+                {%  for line in entity.facebook_data %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+            {% endautoescape %}
+            {%  else %}
+                <p>Good job on making secure account!</p>
+            {% endif %}
+
+
+            <p>
+                Following are some of the most common security questions. Are you using these questions and do the following posts reveal your answers?
+
+                <p> What was the name of your first dog?</p>
+                {% if entity.time_line_data.post_containing_dog_name %}
+                    <img src="{{ entity.time_line_data.post_containing_dog_name.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_dog_name.post_text }}<br>
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+
+                <p> What is your mothers maiden name?</p>
+                {% if entity.time_line_data.post_containing_mothers_maiden %}
+                    <img src="{{ entity.time_line_data.post_containing_mothers_maiden.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_mothers_maiden.post_text }}<br>
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+                <p>locations are often the answer to security questions ex. where did you meet your spouse? where is your favorite place to vacation?</p>
+                {% if entity.time_line_data.posts_containing_city_names %}
+                        {%  for post in entity.time_line_data.posts_containing_city_names %}
+                            <img src="{{ post.image_url }}" style="width:400px;height:400px;"><br>
+                            {{ post.post_text }}<br>
+                        {% endfor %}
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+                <p> What street did you grow up on?</p>
+                {% if entity.time_line_data.post_containing_street %}
+                    <img src="{{ entity.time_line_data.post_containing_street.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_street.post_text }}<br>
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+
+                <p> What is your favourite book?</p>
+                {% if entity.time_line_data.post_containing_book %}
+
+                    <img src="{{ entity.time_line_data.post_containing_book.image_url }}" style="width:400px;height:400px;"><br>
+                    {{ entity.time_line_data.post_containing_book.post_text }}<br>
+
+                {%  else %}
+                    <p>We could not find posts where this information may have been revealed</p>
+                {% endif %}
+
+
+            </p>
+
+            <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
+                {% csrf_token %}
+                <button type='submit' id="submit" class="btn-submit m-b-0" >send results to email</button>
+                <div id="loader" style="position: relative"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showSpinner() {
+          document.getElementById("loader").style.visibility = "visible";
+          document.getElementById("submit").style.visibility = "hidden";
+        }
+    </script>
+
+{% endblock %}
