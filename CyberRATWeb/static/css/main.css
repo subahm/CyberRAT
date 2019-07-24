@@ -218,7 +218,10 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-bottom: 68px;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
 }
 
 .contact100-form-title {
@@ -229,7 +232,8 @@ iframe {
   color: #333333;
   line-height: 1.2;
   text-align: left;
-  padding-bottom: 44px;
+  padding-left: 20px;
+  padding-bottom: 10px;
 }
 
 

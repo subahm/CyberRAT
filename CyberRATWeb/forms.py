@@ -3,12 +3,12 @@ from CyberRATWeb.models import Search
 
 
 class SearchForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class': "input--style-1", "placeholder": "name"}))
-    email = forms.CharField(widget=forms.TextInput(attrs={'class': "input--style-1", "placeholder": "email"}))
+    name = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Enter your name here"}))
+    email = forms.CharField(widget=forms.TextInput(attrs={ "placeholder": "Enter your email here"}))
     facebook_link = forms.CharField(
-        required=False, widget=forms.TextInput(attrs={'class': "input--style-1", "placeholder": "facebook link"}))
+        required=False, widget=forms.TextInput(attrs={"placeholder": "Enter link to your Facebook profile"}))
     instagram_link = forms.CharField(
-        required=False, widget=forms.TextInput(attrs={'class': "input--style-1", "placeholder": "ex. https://www.instagram.com/USERNAME/"}))
+        required=False, widget=forms.TextInput(attrs={"placeholder": "Enter link to your Instagram profile"}))
 
 
     class Meta:
