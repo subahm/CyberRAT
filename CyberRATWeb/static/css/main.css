@@ -205,6 +205,10 @@ iframe {
   opacity: 1;
 }
 
+.header {
+  font-size:150px;
+  top: 50px;
+}
 
 /*==================================================================
 [ Form ]*/
@@ -388,6 +392,23 @@ textarea.input100 {
   -ms-transform: translateX(10px);
   -o-transform: translateX(10px);
   transform: translateX(10px);
+}
+
+.container-contact100-header{
+  display:inline-block;
+  font-size: 100px;
+  color: #ff4b5a;
+  margin-top:-170px;
+  font-family: Comic Sans MS;
+  position: fixed;
+  z-index: -1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
