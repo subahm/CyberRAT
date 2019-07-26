@@ -35,7 +35,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <br>
 
       <div class="w3-card w3-round w3-white">
-        <div class="w3-container">
+        <div class="w3-container" style="margin-bottom: 17px;">
         <br><p >
          <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
             {% csrf_token %}
