@@ -80,6 +80,7 @@ def results(request, uuid):
                     result.append('<b>' + data1[i] + '</b>' + ': ' + data2[i])
         except:
              result.append('Could not retrieve anything')
+        entity.threatLevel = (len(result) - 1) * 3
         return result
 
     def ProfilePhoto(profile_link):
@@ -91,7 +92,6 @@ def results(request, uuid):
             result=images['src']
         except:
             result=''
-
         return result
 
     # def Linkedin(linkedin_profile_link):
@@ -129,14 +129,16 @@ def results(request, uuid):
     # print(entity.time_line_data.post_containing_mothers_maiden)
 
 
-    if (len(entity.breachNumber) <= 0):
+    """if (len(entity.breachNumber) <= 0):
         entity.threatLevel = '0%'
     elif (len(entity.breachNumber) < 3):
         entity.threatLevel = '25%'
     elif (len(entity.breachNumber) < 5):
         entity.threatLevel = '50%'
     else:
-        entity.threatLevel = '100%'
+        entity.threatLevel = '100%'"""
+    threat = len(entity.breachNumber)*8
+    entity.threatLevel = entity.threatLevel + threat
 
     return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid})
 
