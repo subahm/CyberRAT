@@ -123,12 +123,8 @@ def results(request, uuid):
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
-    #entity.time_line_data = TimeLineAnalysisResults(time_line_data)
+    entity.time_line_data = TimeLineAnalysisResults(time_line_data)
     entity.profilePhoto = ProfilePhoto(profile_link)
-
-    # print("THIS IS THING")
-    # print(entity.time_line_data.post_containing_dog_name)
-    # print(entity.time_line_data.post_containing_mothers_maiden)
 
 
     """if (len(entity.breachNumber) <= 0):
