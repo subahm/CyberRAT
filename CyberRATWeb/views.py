@@ -112,7 +112,8 @@ def results(request, uuid):
     #          result.append('Could not retrieve anything')
     #     return result
 
-    time_line_data = get_instagram_posts(instagram_link)
+    if(instagram_link != ""):
+        time_line_data = get_instagram_posts(instagram_link)
 
     entity = Entity('', '', '','','','', '')
 

@@ -21,6 +21,3 @@ def Linkedin(linkedin_profile_link):
     except:
         result.append('Could not retrieve anything')
     print (*result)
-    print ("sfs")
-
-Linkedin("https://ca.linkedin.com/in/subah-mehrotra-b71484132")
