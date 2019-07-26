@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load staticfiles %}
 <html>
 <title>CyberRAT</title>
 <meta charset="UTF-8">
@@ -8,8 +7,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
@@ -46,14 +43,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          </form>
          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-download"></i> Download PDF</button>
 
-        <div class="w3-container">
-        <br>
-            <p>
-             <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
-                {% csrf_token %}
-                <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-envelope"></i> Email</button>
-            	<div id="loader" style="position: absolute"></div>
-             </form>
             </p>
 
         </div>
@@ -102,13 +91,9 @@ function move() {
     }
   }
 }
-
-function showSpinner() {
-     document.getElementById("loader").style.visibility = "visible";
-     document.getElementById("submit").style.visibility = "hidden";
-}
 </script>
-
+    </script>
+      
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <img src="https://store-images.s-microsoft.com/image/apps.2401.13510798883203237.d9b40472-ef9e-459e-88a8-fd9ee8e1466b.2a730341-fe3c-4e7f-baba-f147cbd7532b" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
 
@@ -258,7 +243,7 @@ function showSpinner() {
                 }
                 </script>
 
-
+      
     <!-- End Middle Column -->
     </div>
     
@@ -271,5 +256,19 @@ function showSpinner() {
 </div>
 <br>
 
+
+
+ 
+<script>
+// Accordion
+
+
+function showSpinner() {
+ document.getElementById("loader").style.visibility = "visible";
+ document.getElementById("submit").style.visibility = "hidden";
+}
+
+</script>
+
 </body>
-</html>
+</html> 
