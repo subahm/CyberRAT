@@ -81,6 +81,8 @@ def results(request, uuid):
         except:
              result.append('Could not retrieve anything')
         entity.threatLevel = (len(result) - 1) * 3
+        if (entity.threatLevel > 50):
+            entity.threatLevel = 50
         return result
 
     def ProfilePhoto(profile_link):
@@ -138,7 +140,11 @@ def results(request, uuid):
     else:
         entity.threatLevel = '100%'"""
     threat = len(entity.breachNumber)*8
+    if(threat > 50):
+        threat = 50
     entity.threatLevel = entity.threatLevel + threat
+    if(entity.threatLevel > 85):
+        entity.threatLevel = 80
 
     return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid})
 
