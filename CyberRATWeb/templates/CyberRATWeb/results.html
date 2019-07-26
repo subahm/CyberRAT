@@ -114,7 +114,10 @@ function move() {
             {% endif %}
             </p>
 
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
 
@@ -138,7 +141,10 @@ function move() {
             <br>
 
 
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
 
@@ -199,7 +205,10 @@ function move() {
 
 
             </p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
 
@@ -211,9 +220,28 @@ function move() {
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom  collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
+              <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+                </script>
 
       
     <!-- End Middle Column -->

@@ -411,6 +411,12 @@ textarea.input100 {
   align-items: center;
 }
 
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
 
 
 /*------------------------------------------------------------------
