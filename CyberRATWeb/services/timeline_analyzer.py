@@ -99,7 +99,7 @@ def generic_scan(key_word, time_line_posts):
             key_word_found = False
             for token in doc:
                 token_similarity = token.similarity(keyword_token)
-                if token_similarity > 0.9:
+                if token_similarity > 0.8:
                     key_word_similarity = token_similarity
                     key_word_found = True
                     break
