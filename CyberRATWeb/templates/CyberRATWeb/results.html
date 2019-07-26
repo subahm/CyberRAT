@@ -13,7 +13,7 @@
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
-<body class="w3-theme-l5" onload="move();" style="background-image: url('https://media.giphy.com/media/ELham0Mveox9e/giphy.gif')">
+<body class="w3-theme-l5" onload="move();" style="background-image: url('https://media.giphy.com/media/ELham0Mveox9e/source.gif')">
 
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:30px; ">
@@ -38,6 +38,14 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <br>
 
       <div class="w3-card w3-round w3-white">
+        <div class="w3-container" style="margin-bottom: 17px;">
+        <br><p >
+         <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
+            {% csrf_token %}
+            <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-envelope"></i> Email</button>
+         </form>
+         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-download"></i> Download PDF</button>
+
         <div class="w3-container">
         <br>
             <p>
@@ -121,7 +129,10 @@ function showSpinner() {
             {% endif %}
             </p>
 
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
 
@@ -145,7 +156,10 @@ function showSpinner() {
             <br>
 
 
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
 
@@ -206,7 +220,10 @@ function showSpinner() {
 
 
             </p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
 
@@ -218,11 +235,30 @@ function showSpinner() {
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-plus"></i> Recommendations</button>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom  collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+              <div class="content" style="display: none; background-color: #f1f1f1;">
+                <p>Add Something........</p>
+                </div>
 
       </div>
+              <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
 
-      
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+                </script>
+
+
     <!-- End Middle Column -->
     </div>
     

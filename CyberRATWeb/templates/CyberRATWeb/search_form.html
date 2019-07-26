@@ -1,4 +1,5 @@
 {% extends 'CyberRATWeb/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -41,7 +42,8 @@
 						</span>
 
 					</button>
-					<div id="loader" style="position: absolute"></div>
+
+					<div id="loader" style="position: absolute; visibility: hidden; width:710px; height: 50px;"><img src="{% static 'images/loader.gif' %}" style="height: 70px; padding-left: 220px;"> </div>
 				</div>
 			</form>
 

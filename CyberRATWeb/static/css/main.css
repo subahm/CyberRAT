@@ -396,7 +396,7 @@ textarea.input100 {
 
 .container-contact100-header{
   display:inline-block;
-  font-size: 100px;
+  font-size: 8vw;
   color: #ff4b5a;
   margin-top:-170px;
   font-family: Comic Sans MS;
@@ -411,6 +411,12 @@ textarea.input100 {
   align-items: center;
 }
 
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
 
 
 /*------------------------------------------------------------------
