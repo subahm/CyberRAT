@@ -10,7 +10,7 @@
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
-<body class="w3-theme-l5" style="background-image: url('https://media.giphy.com/media/ELham0Mveox9e/giphy.gif')">
+<body class="w3-theme-l5" onload="move();" style="background-image: url('https://media.giphy.com/media/ELham0Mveox9e/giphy.gif')">
 
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:30px; ">
@@ -66,12 +66,33 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity">Vulnerability Score</h6>
               <div class="bar-container">
-                <div class="skills html" style="--radius: {{entity.threatLevel}}">{{entity.threatLevel}}%</div>
+                  <div class="w3-light-grey">
+                    <div id="myBar" class="w3-container w3-theme w3-center" style="width: {{entity.threatLevel}}%;">
+                    </div>
+                  </div>
+                <div class="skills html" style="--radius: {{entity.threatLevel}}"></div>
             </div>
             </div>
           </div>
         </div>
       </div>
+<script>
+function move() {
+  var elem = document.getElementById("myBar");
+  var width = 0;
+  var id = setInterval(frame, 40);
+  function frame() {
+    if (width >= {{entity.threatLevel}}) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+</script>
+    </script>
       
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <img src="https://store-images.s-microsoft.com/image/apps.2401.13510798883203237.d9b40472-ef9e-459e-88a8-fd9ee8e1466b.2a730341-fe3c-4e7f-baba-f147cbd7532b" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
