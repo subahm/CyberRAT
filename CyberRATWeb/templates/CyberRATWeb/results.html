@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <title>CyberRAT</title>
 <meta charset="UTF-8">
@@ -40,9 +41,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
             {% csrf_token %}
             <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-envelope"></i> Email</button>
+            <div id="loader" style="visibility: hidden; width:400px; height: 50px;"><img src="{% static 'images/loader.gif' %}" style="height: 50px; padding-left: 20px;"> </div>
          </form>
-         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-download"></i> Download PDF</button>
-
             </p>
 
         </div>
