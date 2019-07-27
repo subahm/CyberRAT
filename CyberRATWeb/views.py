@@ -114,8 +114,6 @@ def results(request, uuid):
     #          result.append('Could not retrieve anything')
     #     return result
 
-    if(instagram_link != ""):
-        time_line_data = get_instagram_posts(instagram_link)
 
     entity = Entity('', '', '','','','', '')
 
@@ -123,7 +121,13 @@ def results(request, uuid):
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
-    entity.time_line_data = TimeLineAnalysisResults(time_line_data)
+
+    if(instagram_link != ""):
+        time_line_data = get_instagram_posts(instagram_link)
+        entity.time_line_data = TimeLineAnalysisResults(time_line_data)
+    else:
+        entity.time_line_data = None
+
     entity.profilePhoto = ProfilePhoto(profile_link)
 
 

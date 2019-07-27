@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{#{% load staticfiles %}#}
 <html>
 <title>CyberRAT</title>
 <meta charset="UTF-8">
@@ -164,87 +163,96 @@ div .desc {
 
         <h4>Information from Instagram</h4><br>
 
-        <p>
-                Following are some of the most common security questions. Are you using these questions and do the following posts reveal your answers?
+        {% if entity.time_line_data is None %}
+            <p> Please provide an Instagram link to get results here </p>
+        {% elif entity.time_line_data.account_unreachable %}
+            <p> The given link was unreachable </p>
+        {% elif entity.time_line_data.account_private %}
+            <p> Well Done!! your Instagram account is private </p>
+        {% else %}
+            <p>
+                    Following are some of the most common security questions. Are you using these questions and do the following posts reveal your answers?
 
-                <p> What was the name of your first dog?</p>
-                {% if entity.time_line_data.post_containing_dog_name %}
+                    <p> What was the name of your first dog?</p>
+                    {% if entity.time_line_data.post_containing_dog_name %}
 
-                     <div class="responsive">
-                      <div class="gallery">
-                          <img src="{{ entity.time_line_data.post_containing_dog_name.image_url }}" height="400">
-                        <div class="desc">{{ entity.time_line_data.post_containing_dog_name.post_text }}</div>
-                      </div>
-                    </div>
+                         <div class="responsive">
+                          <div class="gallery">
+                              <img src="{{ entity.time_line_data.post_containing_dog_name.image_url }}" height="400">
+                            <div class="desc">{{ entity.time_line_data.post_containing_dog_name.post_text }}</div>
+                          </div>
+                        </div>
 
-                {%  else %}
-                    <p>We could not find posts where this information may have been revealed</p>
-                {% endif %}
-
-
-                <p> What is your mothers maiden name?</p>
-                {% if entity.time_line_data.post_containing_mothers_maiden %}
-
-                    <div class="responsive">
-                      <div class="gallery">
-                          <img src="{{ entity.time_line_data.post_containing_mothers_maiden.image_url }}" height="400">
-                        <div class="desc">{{ entity.time_line_data.post_containing_mothers_maiden.post_text }}</div>
-                      </div>
-                    </div>
-
-                {%  else %}
-                    <p>We could not find posts where this information may have been revealed</p>
-                {% endif %}
-
-                <p>locations are often the answer to security questions ex. where did you meet your spouse? where is your favorite place to vacation?</p>
-                {% if entity.time_line_data.posts_containing_city_names %}
-                        {%  for post in entity.time_line_data.posts_containing_city_names %}
-
-                            <div class="responsive">
-                              <div class="gallery">
-                                  <img src="{{ post.image_url }}" height="400">
-                                <div class="desc">{{ post.post_text }}</div>
-                              </div>
-                            </div>
-
-                        {% endfor %}
-                {%  else %}
-                    <p>We could not find posts where this information may have been revealed</p>
-                {% endif %}
-
-                <p> What street did you grow up on?</p>
-                {% if entity.time_line_data.post_containing_street %}
-                     <div class="responsive">
-                      <div class="gallery">
-                          <img src="{{ entity.time_line_data.post_containing_street.image_url }}" height="400">
-                        <div class="desc">{{ entity.time_line_data.post_containing_street.post_text }}</div>
-                      </div>
-                    </div>
-                {%  else %}
-                    <p>We could not find posts where this information may have been revealed</p>
-                {% endif %}
+                    {%  else %}
+                        <p>We could not find posts where this information may have been revealed</p>
+                    {% endif %}
 
 
-                <p> What is your favourite book?</p>
-                {% if entity.time_line_data.post_containing_book %}
+                    <p> What is your mothers maiden name?</p>
+                    {% if entity.time_line_data.post_containing_mothers_maiden %}
 
-                    <div class="responsive">
-                      <div class="gallery">
-                          <img src="{{ entity.time_line_data.post_containing_book.image_url }}" height="400">
-                        <div class="desc">{{ entity.time_line_data.post_containing_book.post_text }}</div>
-                      </div>
-                    </div>
+                        <div class="responsive">
+                          <div class="gallery">
+                              <img src="{{ entity.time_line_data.post_containing_mothers_maiden.image_url }}" height="400">
+                            <div class="desc">{{ entity.time_line_data.post_containing_mothers_maiden.post_text }}</div>
+                          </div>
+                        </div>
 
-                {%  else %}
-                    <p>We could not find posts where this information may have been revealed</p>
-                {% endif %}
+                    {%  else %}
+                        <p>We could not find posts where this information may have been revealed</p>
+                    {% endif %}
+
+                    <p>locations are often the answer to security questions ex. where did you meet your spouse? where is your favorite place to vacation?</p>
+                    {% if entity.time_line_data.posts_containing_city_names %}
+                            {%  for post in entity.time_line_data.posts_containing_city_names %}
+
+                                <div class="responsive">
+                                  <div class="gallery">
+                                      <img src="{{ post.image_url }}" height="400">
+                                    <div class="desc">{{ post.post_text }}</div>
+                                  </div>
+                                </div>
+
+                            {% endfor %}
+                    {%  else %}
+                        <p>We could not find posts where this information may have been revealed</p>
+                    {% endif %}
+
+                    <p> What street did you grow up on?</p>
+                    {% if entity.time_line_data.post_containing_street %}
+                         <div class="responsive">
+                          <div class="gallery">
+                              <img src="{{ entity.time_line_data.post_containing_street.image_url }}" height="400">
+                            <div class="desc">{{ entity.time_line_data.post_containing_street.post_text }}</div>
+                          </div>
+                        </div>
+                    {%  else %}
+                        <p>We could not find posts where this information may have been revealed</p>
+                    {% endif %}
 
 
-            </p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
+                    <p> What is your favourite book?</p>
+                    {% if entity.time_line_data.post_containing_book %}
+
+                        <div class="responsive">
+                          <div class="gallery">
+                              <img src="{{ entity.time_line_data.post_containing_book.image_url }}" height="400">
+                            <div class="desc">{{ entity.time_line_data.post_containing_book.post_text }}</div>
+                          </div>
+                        </div>
+
+                    {%  else %}
+                        <p>We could not find posts where this information may have been revealed</p>
+                    {% endif %}
+
+                </p>
+
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
               <div class="content" style="display: none; background-color: #f1f1f1;">
-                <p>Add Something........</p>
+                <p> We recommend that you make your Instagram account private. You should also remove or alter these posts you see any oppurtunity for hackers to guess your security question from them.</p>
                 </div>
+        {% endif %}
+
 
       </div>
 

@@ -6,9 +6,15 @@ class TimeLineAnalysisResults:
     posts_containing_city_names = None
     post_containing_street = None
     post_containing_book = None
+    account_unreachable = False
+    account_private = False
 
     def __init__(self, time_line_posts):
-        if time_line_posts:
+        if time_line_posts == "account unreachable":
+            self.account_unreachable = True
+        elif time_line_posts == "account private":
+            self.account_private = True
+        else:
             self.post_containing_dog_name = scan_for_dog_name(time_line_posts)
             self.post_containing_mothers_maiden = scan_for_mothers_maiden(time_line_posts)
             self.posts_containing_city_names = scan_for_city_names(time_line_posts)

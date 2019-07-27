@@ -16,7 +16,15 @@ def get_instagram_posts(profile_link):
     except:
         print('failed to obtain posts from instagram timeline')
         c.close()
-        return []
+        return "account unreachable"
+
+    try:
+        privacy_status = c.find_element_by_xpath("//*[contains(text(),'This Account is Private')]")
+        if privacy_status:
+            c.close()
+            return "account private"
+    except:
+        print("account not private")
 
     element = c.find_element_by_tag_name('body') # or whatever tag you're looking to scrape from
 
