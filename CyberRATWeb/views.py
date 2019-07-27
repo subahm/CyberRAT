@@ -73,7 +73,10 @@ def results(request, uuid):
             data1 = [element.text for element in soup.find_all("div", class_="_2lzr _50f5 _50f7")]
             data2 = [element.text for element in soup.find_all("div", class_="fsm fwn fcg")]
 
-            result.append('Lives in ' + data['address']['addressLocality'])
+            try:
+                result.append('Lives in ' + data['address']['addressLocality'])
+            except:
+                result
             if(data1):
                 result.append('Affiliations with')
                 for i in range(len(data1)):
