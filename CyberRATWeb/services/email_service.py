@@ -65,7 +65,10 @@ class EmailService:
         # add pdf to email
         # must install from https://wkhtmltopdf.org/downloads.html for respective os to generate pdfs
         pdf_location = "Resources/EmailHub/cyber_rat_results-" + uuid + ".pdf"
-        pdfkit.from_string(site_html, pdf_location, css="CyberRATWeb/static/css/main.css")
+
+        pdfkit.from_string(site_html, pdf_location)
+
+
 
         with open(pdf_location, "rb") as opened:
             openedfile = opened.read()
