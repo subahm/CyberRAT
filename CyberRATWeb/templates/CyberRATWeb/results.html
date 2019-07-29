@@ -262,7 +262,30 @@ div .desc {
 
         <h4>Information from Twitter</h4><br>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        {%  if entity.twitter_data %}
+
+            {% autoescape off %}
+            <p>
+                {%  for line in entity.twitter_data %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+            {% endautoescape %}
+            {%  else %}
+                <p>Good job on making secure account!</p>
+            {% endif %}
+            <br>
+
+        {%  if twitter_posts %}
+            <p>
+                {%  for line in twitter_posts %}
+                   <div class="content" style="display: block; background-color: rgb(241, 241, 241); margin-bottom: 15px;">{{ line }}</div>
+                {% endfor %}
+            </p>
+            {%  else %}
+
+            {% endif %}
 
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom  collapsible"><i class="fa fa-plus"></i> Recommendations</button>
               <div class="content" style="display: none; background-color: #f1f1f1;">

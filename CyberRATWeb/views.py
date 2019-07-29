@@ -16,14 +16,16 @@ from CyberRATWeb.services.email_service import EmailService
 
 class Entity():
 
-    def __init__(self, name, breachNumber, breachedSites, facebook_data, time_line_data, threatLevel, profilePhoto):
-        self.name=name
+    def __init__(self, name, breachNumber, breachedSites, facebook_data, time_line_data, threatLevel, profilePhoto,
+                 twitter_data):
+        self.name = name
         self.breachNumber = breachNumber
         self.breachedSites = breachedSites
         self.facebook_data = facebook_data
         self.time_line_data = time_line_data
         self.threatLevel = threatLevel
         self.profilePhoto = profilePhoto
+        self.twitter_data = twitter_data
 
 
 class HomeView(CreateView):
@@ -33,7 +35,6 @@ class HomeView(CreateView):
 
 
 def results(request, uuid):
-
     try:
         search = get_object_or_404(Search, uuid=uuid)
     except ValueError:
@@ -43,31 +44,31 @@ def results(request, uuid):
     email = search.email
     profile_link = search.facebook_link
     instagram_link = search.instagram_link
+    twitter_link = search.twitter_link
 
     def checkHIBP(email):
-        result=[]
+        result = []
         headers = {
-                 'hibp-api-key': '4d56711edb2c4b72b8a418ea2c558d41',
-                 'user-agent': 'CyberRat'
+            'hibp-api-key': '4d56711edb2c4b72b8a418ea2c558d41',
+            'user-agent': 'CyberRat'
         }
-        
-        url = 'https://haveibeenpwned.com/api/v3/breachedaccount/'+email+'?truncateResponse=False'
 
-        resp = requests.get(url=url,headers=headers)
+        url = 'https://haveibeenpwned.com/api/v3/breachedaccount/' + email + '?truncateResponse=False'
+
+        resp = requests.get(url=url, headers=headers)
         try:
             data = resp.json()
             for i in range(len(data)):
-                result.append(data[i]['Name'] + " on " + data[i]['BreachDate'] )
+                result.append(data[i]['Name'] + " on " + data[i]['BreachDate'])
         except:
-            result=[]
+            result = []
         return result
-
 
     def Facebook(profile_link):
         result = []
 
         try:
-            r=requests.get(url=profile_link)
+            r = requests.get(url=profile_link)
             soup = BeautifulSoup(r.text, "html.parser")
             data = json.loads(soup.find('script', type='application/ld+json').text)
             data1 = [element.text for element in soup.find_all("div", class_="_2lzr _50f5 _50f7")]
@@ -77,26 +78,58 @@ def results(request, uuid):
                 result.append('Lives in ' + data['address']['addressLocality'])
             except:
                 result
-            if(data1):
+            if (data1):
                 result.append('Affiliations with')
                 for i in range(len(data1)):
                     result.append('<b>' + data1[i] + '</b>' + ': ' + data2[i])
         except:
-             result.append('Could not retrieve anything')
+            result.append('Could not retrieve anything')
         entity.threatLevel = (len(result) - 1) * 3
         if (entity.threatLevel > 50):
             entity.threatLevel = 50
         return result
 
     def ProfilePhoto(profile_link):
-        result=''
+        result = ''
         try:
             r = requests.get(url=profile_link)
             soup = BeautifulSoup(r.text, "html.parser")
             images = soup.find('img', class_="_11kf img")
-            result=images['src']
+            result = images['src']
         except:
-            result=''
+            result = ''
+        return result
+
+    twitter_posts=[]
+    def TwitterData(twitter_link):
+        result = []
+
+        try:
+            r = requests.get(url=twitter_link)
+            soup = BeautifulSoup(r.text, "html.parser")
+            bio = soup.find('p', class_="ProfileHeaderCard-bio u-dir")
+            if (bio.text):
+                result.append(bio.text)
+            bio1 = soup.find('span', class_="ProfileHeaderCard-locationText u-dir")
+            if (bio1.text):
+                result.append(bio1.text)
+            bio2 = soup.find('span', class_="ProfileHeaderCard-urlText u-dir")
+            if (bio2.text):
+                result.append(bio2.text)
+            bio3 = soup.find('span', class_="ProfileHeaderCard-joinDateText js-tooltip u-dir")
+            if (bio3.text):
+                result.append(bio3.text)
+            bio4 = soup.find('span', class_="ProfileHeaderCard-birthdateText u-dir")
+            if (bio4.text):
+                result.append(bio4.text)
+            posts = soup.findAll('p', class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text")
+            if(posts):
+                for i in range(10):
+                    twitter_posts.append(posts[i].text)
+
+        except:
+            result = ''
+
         return result
 
     # def Linkedin(linkedin_profile_link):
@@ -117,22 +150,24 @@ def results(request, uuid):
     #          result.append('Could not retrieve anything')
     #     return result
 
-
-    entity = Entity('', '', '','','','', '')
+    entity = Entity('', '', '', '', '', '', '', '')
 
     entity.name = name
     entity.breachNumber = checkHIBP(email)
     entity.breachedSites = checkHIBP(email)
     entity.facebook_data = Facebook(profile_link)
 
-    if(instagram_link != ""):
+    if (instagram_link != ""):
         time_line_data = get_instagram_posts(instagram_link)
         entity.time_line_data = TimeLineAnalysisResults(time_line_data)
     else:
         entity.time_line_data = None
 
     entity.profilePhoto = ProfilePhoto(profile_link)
-
+    if (twitter_link != ""):
+        entity.twitter_data = TwitterData(twitter_link)
+    else:
+        entity.twitter_data = None
 
     """if (len(entity.breachNumber) <= 0):
         entity.threatLevel = '0%'
@@ -142,14 +177,14 @@ def results(request, uuid):
         entity.threatLevel = '50%'
     else:
         entity.threatLevel = '100%'"""
-    threat = len(entity.breachNumber)*8
-    if(threat > 50):
+    threat = len(entity.breachNumber) * 8
+    if (threat > 50):
         threat = 50
     entity.threatLevel = entity.threatLevel + threat
-    if(entity.threatLevel > 85):
+    if (entity.threatLevel > 85):
         entity.threatLevel = 80
 
-    return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid})
+    return render(request, 'CyberRATWeb/results.html', {'entity': entity, 'uuid': uuid, 'twitter_posts': twitter_posts})
 
 
 def generateEmail(request, uuid, entity):

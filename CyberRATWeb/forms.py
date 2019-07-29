@@ -9,9 +9,11 @@ class SearchForm(forms.ModelForm):
         required=False, widget=forms.TextInput(attrs={"placeholder": "Enter link to your Facebook profile"}))
     instagram_link = forms.CharField(
         required=False, widget=forms.TextInput(attrs={"placeholder": "Enter link to your Instagram profile"}))
+    twitter_link = forms.CharField(
+        required=False, widget=forms.TextInput(attrs={"placeholder": "Enter link to your Twitter profile"}))
 
 
     class Meta:
         model = Search
 
-        fields = ('name', 'email', 'facebook_link', 'instagram_link')
+        fields = ('name', 'email', 'facebook_link', 'instagram_link', 'twitter_link')
