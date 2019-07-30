@@ -83,7 +83,7 @@ def results(request, uuid):
                 for i in range(len(data1)):
                     result.append('<b>' + data1[i] + '</b>' + ': ' + data2[i])
         except:
-            result.append('Could not retrieve anything')
+            result = []
         entity.threatLevel = (len(result) - 1) * 3
         if (entity.threatLevel > 50):
             entity.threatLevel = 50

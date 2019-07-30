@@ -71,7 +71,8 @@ div .desc {
          <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
             {% csrf_token %}
             <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-envelope"></i> Email</button>
-            <div id="loader" style="visibility: hidden; width:400px; height: 50px;"><img src="http://127.0.0.1:8000/static/images/loader.gif" style="height: 50px; padding-left: 20px;"> </div>
+            <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-download"></i> Download </button>
+            <div id="loader" style="visibility: hidden; width:400px; height: 50px; display: none;"><img src="http://127.0.0.1:8000/static/images/loader.gif" style="height: 50px; padding-left: 20px;"> </div>
          </form>
             </p>
 
@@ -122,11 +123,12 @@ div .desc {
                 <p>Good job on making secure passwords!</p>
             {% endif %}
             </p>
-
+        {%  if entity.breachedSites %}
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
               <div class="content" style="display: none; background-color: #f1f1f1;">
-                <p>Add Something........</p>
+                <p>Make sure you never used the passwords used in these sites after they were compromised</p>
                 </div>
+                {%  endif %}
 
       </div>
 
@@ -145,16 +147,24 @@ div .desc {
             </p>
             {% endautoescape %}
             {%  else %}
-                <p>Good job on making secure account!</p>
+                <p>Couldn't find you. Good job on making a secure account!</p>
             {% endif %}
             <br>
 
-
+        {%  if entity.facebook_data %}
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom collapsible"><i class="fa fa-plus"></i> Recommendations</button>
               <div class="content" style="display: none; background-color: #f1f1f1;">
-                <p>Add Something........</p>
-                </div>
+                <p>Criminals often use Facebook to find information about people they want to attack.
+                They often target all the people working in a particular organization by looking at the organization's facebook page.
+                 Users reveal their emails, phone numbers, addresses, employers, birthdays and other pieces of private data, which in many cases
+                  are user passwords. Criminals often use the data to plan a phishing attacks against the user or the whole organization.</p>
+                 <p> It is recommended to allow only your friends who you trust to see your personal information. To do so, open your Facebook profile
+                 and set visibility of your Facebook data along with your pictures to only 'Friends'. This will create an additional layer of security
+                 from criminals online.</p>
 
+</p>
+                </div>
+        {% endif %}
       </div>
 
 
@@ -286,11 +296,13 @@ div .desc {
             {%  else %}
 
             {% endif %}
+            {%  if twitter_posts %}
 
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom  collapsible"><i class="fa fa-plus"></i> Recommendations</button>
               <div class="content" style="display: none; background-color: #f1f1f1;">
-                <p>Add Something........</p>
+                <p>Set visibility of public information to public only if needed.</p>
                 </div>
+                {% endif %}
 
       </div>
               <script>
@@ -341,7 +353,8 @@ function move() {
 
 function showSpinner() {
  document.getElementById("loader").style.visibility = "visible";
- document.getElementById("submit").style.visibility = "hidden";
+ document.getElementById("loader").style.display = "block";
+
 }
 </script>
 
