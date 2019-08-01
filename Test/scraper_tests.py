@@ -1,5 +1,5 @@
 import unittest
-from CyberRatv1.CyberRATWeb.scrapers.instagram_scrapper import get_instagram_posts
+from CyberRatv1.CyberRATWeb.scrapers.scrappers import *
 
 from CyberRatv1.CyberRATWeb.services.timeline_analyzer import scan_for_dog_name,\
     scan_for_mothers_maiden, scan_for_city_names,\

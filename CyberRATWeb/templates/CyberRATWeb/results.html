@@ -71,7 +71,6 @@ div .desc {
          <form action="email/{{ uuid }}/{{ entity }}/" method='POST' onsubmit="showSpinner()">
             {% csrf_token %}
             <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-envelope"></i> Email</button>
-            <button type="submit" id="submit" class="w3-button w3-theme-d1 w3-margin-bottom" style="width: 300px;"><i class="fa fa-download"></i> Download </button>
             <div id="loader" style="visibility: hidden; width:400px; height: 50px; display: none;"><img src="http://127.0.0.1:8000/static/images/loader.gif" style="height: 50px; padding-left: 20px;"> </div>
          </form>
             </p>
